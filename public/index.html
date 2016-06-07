@@ -27,6 +27,10 @@ xmlhttp.send();
 
 function myFunction(wifi_networks) {
 	var selectList = document.getElementById('selectEssid');
+	var option = document.createElement("option");
+	option.value = "no network";
+	option.text = "Please select a network";
+	selectList.appendChild(option);
 	for (var i = 0; i < wifi_networks.length; i++) {
 		var option = document.createElement("option");
 		option.value = wifi_networks[i].essid;
