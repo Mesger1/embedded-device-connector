@@ -7,13 +7,13 @@ var sys = require('util');
 var exec = require('child_process').exec;
 var path = require('path');
 
-var express = require('/home/pi/node-v4.3.2-linux-armv6l/node_modules/express'),
+var express = require('express'),
     app     = express(),
     port    = 3000;
 
 app.use(express.static('public'))
 	
-var bodyParser = require('/home/pi/node-v4.3.2-linux-armv6l/node_modules/body-parser')
+var bodyParser = require('body-parser')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
