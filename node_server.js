@@ -67,6 +67,15 @@ function parse_iwlist_wlan0(input_text){
 var output;
 var networks;
 
+var apn_command = exec("sudo ./setup_wifi_apn.sh", function (error, stdout, stderr) {
+	if(error){
+		console.log(stderr);
+	}
+});
+apn_command.stdout.on('data', function (data) {
+	process.stdout.write(data);
+});
+
 exec("sudo iwlist wlan0 scan", function (error, stdout, stderr) {
 	  if(error){
 		  console.log(stderr);

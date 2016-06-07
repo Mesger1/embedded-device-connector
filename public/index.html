@@ -32,10 +32,12 @@ function myFunction(wifi_networks) {
 	option.text = "Please select a network";
 	selectList.appendChild(option);
 	for (var i = 0; i < wifi_networks.length; i++) {
-		var option = document.createElement("option");
-		option.value = wifi_networks[i].essid;
-		option.text = wifi_networks[i].essid + "\t" + wifi_networks[i].quality;
-		selectList.appendChild(option);
+		if(wifi_networks[i] != null){
+			var option = document.createElement("option");
+			option.value = wifi_networks[i].essid;
+			option.text = wifi_networks[i].essid + "\t" + wifi_networks[i].quality;
+			selectList.appendChild(option);
+		}
 	}
 }
 </script>
