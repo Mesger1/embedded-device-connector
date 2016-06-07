@@ -1,0 +1,26 @@
+{
+  "name": "embedded-device-connector",
+  "version": "1.0.0",
+  "description": "connection setup for configuring embedded devices",
+  "main": "\\",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerdmestdagh/embedded-device-connector.git"
+  },
+  "keywords": [
+    "embedded",
+    "AP",
+    "wifi",
+    "connection",
+    "Cloud"
+  ],
+  "author": "Mestdagh Gerd <mestdagh.gerd@gmail.com> (http://gmc.be)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gerdmestdagh/embedded-device-connector/issues"
+  },
+  "homepage": "https://github.com/gerdmestdagh/embedded-device-connector#readme"
+}
