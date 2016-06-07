@@ -1,0 +1,87 @@
+ <HTML>
+	<head>
+        <title>Pi3 Wifi Setup</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" type="text/css" href="css/screen.css">
+        </head>
+		<script>
+		function get() {
+			return new Promise((resolve, reject) => {
+				var req = new XMLHttpRequest();
+				req.open('GET', '/wifi_list');
+				req.onload = () => resolve(req.response);
+			});
+		}
+		
+var xmlhttp = new XMLHttpRequest();
+var url = "/wifi_list";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(wifi_networks) {
+	var selectList = document.getElementById('selectEssid');
+	for (var i = 0; i < wifi_networks.length; i++) {
+		var option = document.createElement("option");
+		option.value = wifi_networks[i].essid;
+		option.text = wifi_networks[i].essid + "\t" + wifi_networks[i].quality;
+		selectList.appendChild(option);
+	}
+}
+</script>
+
+		</script>
+        <body>
+		    <table>
+					<tr>
+						<td><img src='/images/sprite.png'/></td>
+					</tr>
+					<tr>
+						<td>
+							<br/>
+							<input type='submit' value='refresh' onclick='javascript:location.reload();'/>
+							<br/>
+							<br/>
+							
+						</td>
+					</tr>
+				<form action='/connect' method='post'>
+					<tr>
+						<th>Wifi:</th>
+                    </tr>
+                    <tr>
+                        <td>
+						
+							<select name='essid' id="selectEssid">
+							</select>
+						</td>
+                    </tr>
+                    <tr>
+						<th>Passphrase:</th>
+                    </tr>
+                    <tr>
+                        <td>
+							<input type='password' name='passphrase'/>
+						</td>
+                    </tr>
+					<tr>
+						<td>
+							<br/>
+							<input type='submit' value='connect'/>
+							<br/>
+							<br/>
+							
+						</td>
+					</tr>
+				</form>
+
+			</table>
+			
+	</body>
+</html>

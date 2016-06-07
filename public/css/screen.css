@@ -1,0 +1,33 @@
+body{ 
+	color: #111; 
+	font-family: 'Helvetica Neue', sans-serif; 
+	font-size: 14px; 
+	line-height: 24px; 
+	margin: 0 0 24px; 
+	text-align: justify; 
+	text-justify: inter-word; 
+}
+th{
+	text-align:left;
+}
+table{
+	margin:0 auto;
+	width:256px;
+}
+select {
+	width:256px;
+}
+input{
+	width:256px;
+}
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+	text-align:center;
+	text-decoration:bolder;
+	font-family: 'Helvetica Neue', sans-serif; 
+}
