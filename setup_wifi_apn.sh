@@ -13,10 +13,6 @@ else
                 exit
 fi
 
-echo "Installing hostapd and dnsmasq ..."
-apt-get install hostapd dnsmasq -y
-echo "hostapd and dnsmasq installed ! "
-
 #editing /etc/dhcpcd.conf
 FILE="/etc/dhcpcd.conf"
 PATTERN="172.24.1.1/24"
