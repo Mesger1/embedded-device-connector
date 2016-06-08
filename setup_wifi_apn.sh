@@ -13,6 +13,10 @@ else
                 exit
 fi
 
+sudo apt-get install hostapd dnsmasq -y
+
+
+
 #editing /etc/dhcpcd.conf
 FILE="/etc/dhcpcd.conf"
 PATTERN="172.24.1.1/24"
