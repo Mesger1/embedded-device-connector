@@ -1,3 +1,6 @@
+mkdir usr
+mkdir /usr/local
+mkdir /usr/local/device-connector
 npm install https://github.com/gerdmestdagh/embedded-device-connector.git
 cd node_modules
 cd embedded-device-connector
@@ -16,4 +19,4 @@ if [ -z "$PID" ]; then
     else
 	kill -9 $PID
 fi
-npm start &
+npm start > /dev/null 2>&1
