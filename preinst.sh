@@ -1,6 +1,16 @@
 #!/bin/sh
 
-apt-get install hostapd dnsmasq -y
+echo "/etc/resolv.conf"
+echo "removing file"
+sudo rm -rf /etc/resolv.conf
+echo "Creating File"
+cat > /etc/resolv.conf << EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+
+
+sudo apt-get install hostapd dnsmasq -y
 wget https://nodejs.org/dist/v4.3.2/node-v4.3.2-linux-armv6l.tar.gz 
 tar -xvf node-v4.3.2-linux-armv6l.tar.gz > /dev/null 2>&1
 cd node-v4.3.2-linux-armv6l

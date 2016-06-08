@@ -64,6 +64,7 @@ echo "dhcpcd restarted !"
 
 echo "================================================="
 echo "/etc/hostapd/hostapd.conf"
+sudo mkdir /etc/hostapd
 sudo touch /etc/hostapd/hostapd.conf
 rm -rf /etc/hostapd/hostapd.conf
 echo "Creating File"
