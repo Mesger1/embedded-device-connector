@@ -2,7 +2,10 @@
   "name": "embedded-device-connector",
   "version": "1.0.0",
   "description": "connection setup for configuring embedded devices",
-  "main": "\\",
+  "bin": {
+    "embedded-device-connect0r": "./bin/embedded-device-connector"
+  },
+  "main": "./lib/node_server",
   "scripts": {
     "start": "node node_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
