@@ -1,3 +1,4 @@
 node_modules/
-embedded-device-connector-1.0/
-embedded-device-connector-1.0.deb
+embedded-device-connector-*/
+debian/embedded-device-connector-*/
+embedded-device-connector-*.deb

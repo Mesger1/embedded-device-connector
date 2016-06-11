@@ -1,5 +1,3 @@
-control
-preinst.sh
-postinst.sh
-build_deb_package.sh
+build_deb_packahe.sh
+debian/
 
