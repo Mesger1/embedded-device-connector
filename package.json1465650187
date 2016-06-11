@@ -1,0 +1,35 @@
+{
+  "name": "embedded-device-connector",
+  "version": "1.0.0",
+  "description": "connection setup for configuring embedded devices",
+  "bin": {
+    "embedded-device-connector": "./bin/embedded-device-connector"
+  },
+  "main": "./lib/node_server",
+  "scripts": {
+    "start": "node node_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerdmestdagh/embedded-device-connector.git"
+  },
+  "keywords": [
+    "embedded",
+    "AP",
+    "wifi",
+    "connection",
+    "Cloud"
+  ],
+  "author": "Mestdagh Gerd <mestdagh.gerd@gmail.com> (http://gmc.be)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gerdmestdagh/embedded-device-connector/issues"
+  },
+  "homepage": "https://github.com/gerdmestdagh/embedded-device-connector#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jquery": "^3.0.0",
+  }
+}
