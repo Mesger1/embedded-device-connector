@@ -1,25 +1,15 @@
 #!/bin/bash
+name="wifi-connector:setup_wifi_ap"
+exec 1> >(logger -s -t $(basename $name)) 2>&1
 
 if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
 
-wget -q --tries=10 --timeout=20 --spider http://google.com
-if [[ $? -eq 0 ]]; then
-        echo "Connected to Internet"
-else
-        echo "Error no internet connection"
-                exit
-fi
-
-sudo apt-get install hostapd dnsmasq -y
-
-
-
 #editing /etc/dhcpcd.conf
 FILE="/etc/dhcpcd.conf"
-PATTERN="172.24.1.1/24"
+PATTERN="192.168.3.1/24"
 echo "checking file '$FILE'"
 if grep -q $PATTERN $FILE
         then
@@ -28,10 +18,10 @@ if grep -q $PATTERN $FILE
 			echo "making backup ..."
 			cp $FILE $FILE.orig
 			echo "modifying '$FILE'"
-			echo "Creating File : Adding static IP"
+			echo "Creating File : Adding static IP 192.168.3.1"
 cat > $FILE <<EOF
 interface wlan0
-        static ip_address=172.24.1.1/24
+        static ip_address=192.168.3.1/24
 EOF
 fi
 
@@ -53,25 +43,20 @@ fi
 
 
 
-echo "================================================="
-echo "/etc/wpa_supplicant/wpa_supplicant"
-echo "Removing"
 sudo rm -rf /etc/wpa_supplicant/wpa_supplicant
-echo "adding empty wpa_supplicants file"
 sudo touch /etc/wpa_supplicant/wpa_supplicant
 
-echo "================================================="
-echo "Restarting dhcpcd ..."
+sudo systemctl daemon-reload
+
 sudo service dhcpcd restart
-echo "dhcpcd restarted !"
+echo "service dhcpcd restarted"
 
-
-echo "================================================="
-echo "/etc/hostapd/hostapd.conf"
-sudo mkdir /etc/hostapd
-sudo touch /etc/hostapd/hostapd.conf
+if [ -d "/etc/hostapd" ]; then
+        sudo touch /etc/hostapd/hostapd.conf
+    else
+        sudo mkdir /etc/hostapd
+fi
 rm -rf /etc/hostapd/hostapd.conf
-echo "Creating File"
 cat > /etc/hostapd/hostapd.conf <<EOF
 # This is the name of the WiFi interface we configured above
 interface=wlan0
@@ -111,11 +96,10 @@ bind-interfaces      # Bind to the interface to make sure we aren't sending thin
 server=8.8.8.8       # Forward DNS requests to Google DNS
 domain-needed        # Don't forward short names
 bogus-priv           # Never forward addresses in the non-routed address spaces.
-dhcp-range=172.24.1.50,172.24.1.150,12h # Assign IP addresses between 172.24.1.50 and 172.24.1.150 with a 12 hour lease time
+dhcp-range=192.168.3.50,192.168.3.150,12h # Assign IP addresses between 172.24.1.50 and 172.24.1.150 with a 12 hour lease time
 EOF
 
 PID=`ps -ef | grep hostapd | grep -v "grep" | awk '{print $2}'`
-echo $PID
 #to check PID is right
 if [ -z "$PID" ]; then
     echo "No hostapd process Running"
@@ -123,32 +107,16 @@ if [ -z "$PID" ]; then
 	kill -9 $PID
 fi
 
-sudo ifconfig wlan0 up 0.0.0.0
-
-echo "================================================="
-echo "starting hostapd ..."
 sudo service hostapd restart
-echo "hostapd started !"
-echo "starting dnsmasq ..."
+echo "service hostapd restarted"
 sudo service dnsmasq restart
-echo "dnsmasq started !"
-
-
-sudo ifconfig wlan0 up 172.24.1.1
-
-echo "================================================="
-echo "starting hostapd ..."
-sudo service hostapd restart
-echo "hostapd started !"
-echo "starting dnsmasq ..."
-sudo service dnsmasq restart
-echo "dnsmasq started !"
+echo "service dnsmasq restarted"
 
 sudo ifdown wlan0
+echo "wlan0 down"
 sudo ifup wlan0
+echo "wlan0 up"
 
-sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf  > /dev/null &
+sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf &
+echo "hostapd config started"
 
-echo "================================================="
-echo ""
-echo "All done!"

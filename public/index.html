@@ -1,49 +1,37 @@
  <HTML>
 	<head>
         <title>Pi3 Wifi Setup</title>
-			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="stylesheet" type="text/css" href="css/screen.css">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="/css/bootstrap.min.css">
+            <!-- jQuery library -->
+            <script src="/js/jquery.min.js"></script>
+            <!-- Latest compiled JavaScript -->
+            <script src="/js/bootstrap.min.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
-		<script>
-		function get() {
-			return new Promise((resolve, reject) => {
-				var req = new XMLHttpRequest();
-				req.open('GET', '/wifi_list');
-				req.onload = () => resolve(req.response);
-			});
-		}
-		
-var xmlhttp = new XMLHttpRequest();
-var url = "/wifi_list";
-
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var myArr = JSON.parse(xmlhttp.responseText);
-        myFunction(myArr);
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-
-function myFunction(wifi_networks) {
-	var selectList = document.getElementById('selectEssid');
-	var option = document.createElement("option");
-	option.value = "no network";
-	option.text = "Please select a network";
-	selectList.appendChild(option);
-	for (var i = 0; i < wifi_networks.length; i++) {
-		if(wifi_networks[i] != null){
-			var option = document.createElement("option");
-			option.value = wifi_networks[i].essid;
-			option.text = wifi_networks[i].essid + "\t" + wifi_networks[i].quality;
-			selectList.appendChild(option);
-		}
-	}
-}
-</script>
-
-		</script>
-        <body>
+		<script src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            function getWifiList(){
+                var url = "/wifi_list";
+                $.getJSON(url, function(data){
+                    var selectList = document.getElementById('selectEssid');
+                    var option = document.createElement("option");
+                    option.value = "no network";
+                    option.text = "Please select a network";
+                    selectList.appendChild(option);
+                    for (var i = 0; i < data.length; i++) {
+                        if(data[i] != null){
+                            var option = document.createElement("option");
+                            option.value = data[i].essid;
+                            option.text = data[i].essid + "\t" + data[i].quality;
+                            selectList.appendChild(option);
+                        }
+                    }
+                });
+            }
+        </script>
+        <body onload="javascript:getWifiList();">
 		    <table>
 					<tr>
 						<td><img src='/images/sprite.png'/></td>
@@ -51,7 +39,7 @@ function myFunction(wifi_networks) {
 					<tr>
 						<td>
 							<br/>
-							<input type='submit' value='refresh' onclick='javascript:location.reload();'/>
+							<input type='submit' value='refresh' class="btn btn-info" onclick='javascript:location.reload();'/>
 							<br/>
 							<br/>
 							
@@ -59,27 +47,27 @@ function myFunction(wifi_networks) {
 					</tr>
 				<form action='/connect' method='post'>
 					<tr>
-						<th>Wifi:</th>
+						<th class="panel-heading">Wifi:</th>
                     </tr>
                     <tr>
                         <td>
 						
-							<select name='essid' id="selectEssid">
+							<select class="form-control" name='essid' id="selectEssid">
 							</select>
 						</td>
                     </tr>
                     <tr>
-						<th>Passphrase:</th>
+						<th class="panel-heading">Passphrase:</th>
                     </tr>
                     <tr>
                         <td>
-							<input type='password' name='passphrase'/>
+							<input class="form-control" type='password' name='passphrase'/>
 						</td>
                     </tr>
 					<tr>
 						<td>
 							<br/>
-							<input type='submit' value='connect'/>
+							<input class="btn btn-success" type='submit' value='connect'/>
 							<br/>
 							<br/>
 							
