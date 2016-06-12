@@ -1,4 +1,4 @@
 #!/bin/bash
 name="wifi-connector:server"
 exec 1> >(logger -s -t $(basename $name)) 2>&1
-node ../lib/server.js
+sydo node /usr/lib/node_modules/embedded-device-connector/lib/server.js
