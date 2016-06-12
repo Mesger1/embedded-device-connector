@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [ "$EUID" -ne 0 ]
+        then echo "Must be root"
+        exit
+fi
+
 sudo mv /etc/dhcpcd.conf.orig /etc/dhcpcd.conf
 sudo cp /etc/network/interfaces.orig /etc/network/interfaces
 rm -rf /etc/hostapd/hostapd.conf

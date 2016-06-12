@@ -1,11 +1,14 @@
 #!/bin/bash
-name="wifi-connector:setup_wifi_ap"
-exec 1> >(logger -s -t $(basename $name)) 2>&1
 
 if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
+
+
+name="wifi-connector:setup_wifi_ap"
+exec 1> >(logger -s -t $(basename $name)) 2>&1
+
 #editing /etc/dhcpcd.conf
 FILE="/etc/dhcpcd.conf"
 PATTERN="192.168.3.1/24"
