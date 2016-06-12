@@ -28,5 +28,6 @@ fi
 echo "adding server startup to rc.local"
 sed -i 's/wifi-connector \&//g' /etc/rc.local
 sed -i 's/exit 0/wifi-connector \&\nexit 0/g' /etc/rc.local
-sudo wifi-connector &
+
+echo "PLEASE REBOOT NOW !!"
 exit 0  
