@@ -1,4 +1,2 @@
-#!/bin/bash
-name="wifi-connector:server"
-exec 1> >(logger -s -t $(basename $name)) 2>&1
-sydo node /usr/lib/node_modules/embedded-device-connector/lib/server.js
+#!/usr/bin/env node
+require('../lib/server').start();
