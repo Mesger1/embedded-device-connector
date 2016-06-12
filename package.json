@@ -1,18 +1,25 @@
 {
-  "name": "wifi-connector",
-  "version": "1.0.0",
+  "name": "embedded-device-connector",
+  "version": "0.0.1",
   "description": "connection setup for configuring embedded devices",
   "bin": {
-    "wifi-connector": "./bin/wifi-connector"
+    "embedded-device-connector": "./bin/embedded-device-connector"
   },
   "main": "./lib/server",
   "scripts": {
-    "start": "node ./lib/server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  },"files": [
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "lib",
+    "public",
+    "bin"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gerdmestdagh/embedded-device-connector.git"
+    "url": "https://github.com/gerdmestdagh/embedded-device-connector.git"
   },
   "keywords": [
     "embedded",
