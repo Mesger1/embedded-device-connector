@@ -11,6 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
+    "setup_wifi_apn.sh",
+    "setup_wifi_connection.sh",
+    "reset_apn.sh",
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
