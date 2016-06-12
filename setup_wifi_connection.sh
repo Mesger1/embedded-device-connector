@@ -3,6 +3,10 @@ name="wifi-connector:setup_wifi_connection"
 exec 1> >(logger -s -t $(basename $name)) 2>&1
 
 sudo cp /etc/resolv.conf /etc/resolv.conf.orig
+
+if [ ! -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
+    sudo touch /etc/wpa_supplicant/wpa_supplicant.conf
+fi
 sudo ./reset_apn.sh
 sudo cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf.orig
 cat > /etc/wpa_supplicant/wpa_supplicant.conf << EOF
