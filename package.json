@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },"files": [
+  },
+  "files": [
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
@@ -36,6 +37,7 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "syslog-console": "0.0.2"
   }
 }
