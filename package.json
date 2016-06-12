@@ -5,7 +5,7 @@
   "bin": {
     "embedded-device-connector": "bin/embedded-device-connector"
   },
-  "main": "./lib/server",
+  "main": "lib/server",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
