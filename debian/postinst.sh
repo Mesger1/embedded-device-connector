@@ -9,19 +9,14 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
 
-
-mkdir /usr/local/wifi-connector
-cd /usr/local/wifi-connector
-#npm install https://github.com/gerdmestdagh/embedded-device-connector.git
-cd node_modules
-cd embedded-device-connector
+npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g
 
 if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
 
-PID=`ps -ef | grep server.js | grep -v "grep" | awk '{print $2}'`
+PID=`ps -ef | grep node | grep -v "grep" | awk '{print $2}'`
 #to check PID is right
 if [ -z "$PID" ]; then
     echo "No Node Server Running"
@@ -32,8 +27,5 @@ fi
 echo "adding server startup to rc.local"
 sed -i 's/wifi-control//g' /etc/rc.local
 sed -i 's/exit 0/wifi-control\nexit 0/g' /etc/rc.local
-exit 0
-
-
-
-embedded-device-connector
+sudo wifi-connector &
+exit 0  

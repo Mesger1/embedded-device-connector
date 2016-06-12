@@ -105,6 +105,12 @@ if [ -z "$PID" ]; then
 	else
 	kill -9 $PID
 fi
+sudo service hostapd restart
+echo "service hostapd restarted"
+sudo service dnsmasq restart
+echo "service dnsmasq restarted"
+
+sudo ifconfig wlan0 192.168.3.1
 
 sudo service hostapd restart
 echo "service hostapd restarted"
