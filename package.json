@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "connection setup for configuring embedded devices",
   "bin": {
-    "embedded-device-connector": "./bin/embedded-device-connector"
+    "embedded-device-connector": "bin/embedded-device-connector"
   },
   "main": "./lib/server",
   "scripts": {
