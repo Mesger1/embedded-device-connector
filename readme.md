@@ -1,6 +1,5 @@
 #WIFI ACCESS POINT CONFIGURATOR
 
-
 Build debian package :
 - sudo ./build_deb_package.sh ${VERSION}
 
@@ -12,6 +11,8 @@ Install debian package :
 - sudo apt-get -f install
 
 
+tail output with :
+- tail -f /var/log/syslog | grep wifi-connector
 
 
 
