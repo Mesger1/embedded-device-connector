@@ -43,6 +43,11 @@ do
 	break
   fi
   i=`expr $i + 1`
+  if [ -z "$GATEWAY" ]; then
+        echo "retrying"
+    else
+    break
+  fi
 done
 
 
