@@ -59,7 +59,7 @@ else
         if [[ $? -eq 0 ]]; then
 
                 echo "removing server startup from rc.local"
-                sed -i 's/wifi-control//g' /etc/rc.local
+                sed -i 's/wifi-connector//g' /etc/rc.local
                 
                 echo "WIFI SETUP CORRECTLY"
                 
