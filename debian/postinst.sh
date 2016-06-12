@@ -16,15 +16,6 @@ fi
 
 npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g
 
-
-PID=`ps -ef | grep node | grep -v "grep" | awk '{print $2}'`
-#to check PID is right
-if [ -z "$PID" ]; then
-    echo "No Node Server Running"
-    else
-	kill -9 $PID
-fi
-
 echo "adding server startup to rc.local"
 sed -i 's/wifi-connector \&//g' /etc/rc.local
 sed -i 's/exit 0/wifi-connector \&\nexit 0/g' /etc/rc.local
