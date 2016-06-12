@@ -5,6 +5,11 @@ if [ "$EUID" -ne 0 ]
         exit
 fi
 
+
+name="wifi-connector:setup_wifi_ap"
+exec 1> >(logger -s -t $(basename $name)) 2>&1
+
+
 sudo mv /etc/dhcpcd.conf.orig /etc/dhcpcd.conf
 sudo cp /etc/network/interfaces.orig /etc/network/interfaces
 rm -rf /etc/hostapd/hostapd.conf
