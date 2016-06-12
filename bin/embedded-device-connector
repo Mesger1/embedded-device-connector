@@ -1,3 +1,4 @@
-#!/usr/bin/env node
-
-require('../lib/server').start();
+#!/bin/bash
+name="wifi-connector:server"
+exec 1> >(logger -s -t $(basename $name)) 2>&1
+sudo node ../lib/server.js

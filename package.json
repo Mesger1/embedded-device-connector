@@ -37,7 +37,6 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
-    "jquery": "^3.0.0",
-    "syslog-console": "0.0.2"
+    "jquery": "^3.0.0"
   }
 }
