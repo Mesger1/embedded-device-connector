@@ -1,5 +1,5 @@
 {
-  "name": "embedded-device-connector",
+  "name": "wifi-connector",
   "version": "1.0.0",
   "description": "connection setup for configuring embedded devices",
   "bin": {
