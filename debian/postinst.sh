@@ -12,7 +12,7 @@ EOF
 
 mkdir /usr/local/wifi-connector
 cd /usr/local/wifi-connector
-npm install https://github.com/gerdmestdagh/embedded-device-connector.git
+#npm install https://github.com/gerdmestdagh/embedded-device-connector.git
 cd node_modules
 cd embedded-device-connector
 
@@ -28,4 +28,12 @@ if [ -z "$PID" ]; then
     else
 	kill -9 $PID
 fi
-sudo npm start
+
+echo "adding server startup to rc.local"
+sed -i 's/wifi-control//g' /etc/rc.local
+sed -i 's/exit 0/wifi-control\nexit 0/g' /etc/rc.local
+exit 0
+
+
+
+embedded-device-connector

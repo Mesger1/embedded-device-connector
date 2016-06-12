@@ -1,5 +1,4 @@
 #!/bin/sh
-sudo rm -rf /usr/bin/wifi-connector
 sudo  rm -rf /etc/dnsmasq.conf
 echo "/etc/resolv.conf"
 echo "removing file"

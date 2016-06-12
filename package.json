@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "connection setup for configuring embedded devices",
   "bin": {
-    "embedded-device-connector": "bin/embedded-device-connector"
+    "wifi-connector": "bin/wifi-connector"
   },
   "main": "lib/server",
   "scripts": {
@@ -38,7 +38,6 @@
   },
   "homepage": "https://github.com/gerdmestdagh/embedded-device-connector#readme",
   "dependencies": {
-    "ain2": "^2.0.0",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "jquery": "^3.0.0"

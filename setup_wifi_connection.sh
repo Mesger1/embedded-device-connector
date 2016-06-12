@@ -57,13 +57,20 @@ else
         echo "gateway found"
         wget -q --tries=10 --timeout=60 --spider $GATEWAY
         if [[ $? -eq 0 ]]; then
+
+                echo "removing server startup from rc.local"
+                sed -i 's/wifi-control//g' /etc/rc.local
+                
+                echo "WIFI SETUP CORRECTLY"
+                
                 PID=`ps -ef | grep node | grep -v "grep" | awk '{print $2}'`
                 if [ -z "$PID" ]; then
-                    echo "No hostapd process running"
+                    echo "No node process running"
                         else
+                        echo "server killed"
                         kill -9 $PID
+                        
                 fi
-                echo "WIFI SETUP CORRECTLY"
                 exit 0
         fi
 fi

@@ -6,7 +6,6 @@ if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
-
 #editing /etc/dhcpcd.conf
 FILE="/etc/dhcpcd.conf"
 PATTERN="192.168.3.1/24"

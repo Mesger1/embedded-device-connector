@@ -1,6 +1,0 @@
-Configuration file: /etc/hostapd/hostapd.conf
-Configuration file: /dev/fd/63
-eloop: could not process SIGINT or SIGTERM in two seconds. Looks like there
-is a bug that ends up in a busy loop that prevents clean shutdown.
-Killing program forcefully.
-
