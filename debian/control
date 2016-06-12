@@ -3,8 +3,8 @@ Version: 1.0
 Section: base
 Priority: optional
 Architecture: all
-Build-Depends:hostapd (>=2.3) , network-manager (>= 0.9.10) , nodejs (>= 5.11.1)
-Depends:hostapd (>=2.3) , network-manager (>= 0.9.10) , nodejs (>= 5.11.1)
+Build-Depends:hostapd (>=2.3) , dnsmasq (>= 2.72) , nodejs (>= 5.11.1)
+Depends:hostapd (>=2.3) , dnsmasq(>= 2.72) , nodejs (>= 5.11.1)
 Maintainer: Mestdagh Gerd <mestdagh.gerd@gmail.com>
 Description: Embedded Device Connector
  Connect your device to wifi using the embedded's board access point, uses

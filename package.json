@@ -5,9 +5,9 @@
   "bin": {
     "embedded-device-connector": "./bin/embedded-device-connector"
   },
-  "main": "./lib/node_server",
+  "main": "./lib/server",
   "scripts": {
-    "start": "node node_server.js",
+    "start": "node ./lib/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +18,7 @@
     "embedded",
     "AP",
     "wifi",
-    "connection",
-    "Cloud"
+    "connection"
   ],
   "author": "Mestdagh Gerd <mestdagh.gerd@gmail.com> (http://gmc.be)",
   "license": "MIT",

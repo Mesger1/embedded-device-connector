@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "/etc/resolv.conf"
 echo "removing file"
 sudo rm -rf /etc/resolv.conf
@@ -8,25 +10,22 @@ nameserver 8.8.4.4
 EOF
 
 
-mkdir /usr/local/device-connector
-cd /usr/local/device-connector
+mkdir /usr/local/wifi-connector
+cd /usr/local/wifi-connector
 npm install https://github.com/gerdmestdagh/embedded-device-connector.git
 cd node_modules
 cd embedded-device-connector
-#!/bin/bash
 
 if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
 
-PID=`ps -ef | grep node_server.js | grep -v "grep" | awk '{print $2}'`
-echo $PID
+PID=`ps -ef | grep server.js | grep -v "grep" | awk '{print $2}'`
 #to check PID is right
 if [ -z "$PID" ]; then
     echo "No Node Server Running"
     else
 	kill -9 $PID
 fi
-sudo npm start /var/log/device-connector.log 2>&1 &
-exit
+sudo npm start
