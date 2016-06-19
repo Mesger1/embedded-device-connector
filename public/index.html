@@ -12,10 +12,17 @@
         </head>
 		<script src="/js/bootstrap.min.js"></script>
         <script type="text/javascript">
+		var selectedSSID = "no network";
             function getWifiList(){
-                var url = "/wifi_list";
+                //clear the slect list
+				var selectList = document.getElementById('selectEssid');
+				for (var i=document.getElementById('selectEssid').options.length; i-->0;)
+				    document.getElementById('selectEssid').options[i] = null;
+                
+				// get networks json
+				var url = "/wifi_list";
                 $.getJSON(url, function(data){
-                    var selectList = document.getElementById('selectEssid');
+
                     var option = document.createElement("option");
                     option.value = "no network";
                     option.text = "Please select a network";
@@ -23,27 +30,25 @@
                     for (var i = 0; i < data.length; i++) {
                         if(data[i] != null){
                             var option = document.createElement("option");
+							if(data[i].ssid === selectedSSID){
+								option.selected = 'selected';
+							}
                             option.value = data[i].ssid;
-                            option.text = data[i].ssid ;
+                            option.text = data[i].ssid + " " + data[i].quality;
                             selectList.appendChild(option);
                         }
                     }
                 });
             }
-        </script>
-        <body onload="javascript:getWifiList();">
+			//store selected network
+			function selectEssidChanged(value){
+				selectedSSID = value;
+			}
+		</script>
+        <body onload="javascript:getWifiList();setInterval( getWifiList, 10000 );">
 		    <table>
 					<tr>
 						<td><img src='/images/sprite.png'/></td>
-					</tr>
-					<tr>
-						<td>
-							<br/>
-							<input type='submit' value='refresh' class="btn btn-info" onclick='javascript:location.reload();'/>
-							<br/>
-							<br/>
-							
-						</td>
 					</tr>
 				<form action='/connect' method='post'>
 					<tr>
@@ -52,7 +57,7 @@
                     <tr>
                         <td>
 						
-							<select class="form-control" name='essid' id="selectEssid">
+							<select class="form-control" name='essid' id="selectEssid" onChange="selectEssidChanged(this.value)">
 							</select>
 						</td>
                     </tr>
