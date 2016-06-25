@@ -42,6 +42,7 @@
     "express": "^4.13.4",
     "is-running": "^2.0.0",
     "jquery": "^3.0.0",
+    "winston": "^2.2.0",
     "wireless": "^0.3.2",
     "wireless-tools": "^0.15.0"
   }

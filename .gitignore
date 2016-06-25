@@ -1,3 +1,9 @@
 node_modules/
 embedded-device-connector-*/
 debian/embedded-device-connector-*/
+._*
+lib/._*
+lib/wifiscanner/._*
+bin/*.conf
+bin/*.log
+bin/*.txt
