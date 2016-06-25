@@ -14,10 +14,10 @@ optionally :
 
 
 install the nodejs connector app :
-> sudo npm install 
+> sudo npm install https://github.com/gerdmestdagh/embedded-device-connector.git
 
 run the connector app :
-> sudo wifi https://github.com/gerdmestdagh/embedded-device-connector.git
+> sudo wifi-connector
 
 
 
