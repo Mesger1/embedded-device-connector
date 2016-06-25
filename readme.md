@@ -1,4 +1,28 @@
-#WIFI ACCESS POINT CONFIGURATOR
+# UPDATED INSTALL INSTRUCTIONS
+
+update sources.list for node 5.x apt-get :
+> curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
+install node js :
+> sudo apt-get install nodejs
+
+install hostapd and dnsmasq for setting up an accesspoint :
+> sudo apt-get install hostapd dnsmasq
+
+optionally : 
+> sudo apt-get install lsb-core
+
+
+install the nodejs connector app :
+> sudo npm install 
+
+run the connector app :
+> sudo wifi https://github.com/gerdmestdagh/embedded-device-connector.git
+
+
+
+
+# OLD WIFI ACCESS POINT CONFIGURATOR
 
 Build debian package :
 > sudo ./build_deb_package.sh ${VERSION}
