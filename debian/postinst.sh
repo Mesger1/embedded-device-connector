@@ -15,7 +15,7 @@ npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g
 
 echo "adding server startup to rc.local"
 
-sed -i 's/\nsudo wifi-connector//g' /etc/rc.local
+sed -i 's/sudo wifi-connector//g' /etc/rc.local
 sed -i '$ i\sudo wifi-connector' /etc/rc.local
 
 sudo wifi-connector
