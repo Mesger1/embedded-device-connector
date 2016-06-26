@@ -5,6 +5,7 @@ if [ -z "$1" ]; then
     exit 0
 fi
 cd debian
+sudo chmod 755 *.sh
 rm -rf embedded-device-connector-*
 rm -rf ../embedded-device-connector-*
 mkdir embedded-device-connector-$VERSION
