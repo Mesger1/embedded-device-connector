@@ -1,0 +1,5 @@
+LSB Version:	core-2.0-armhf:core-2.0-noarch:core-3.0-armhf:core-3.0-noarch:core-3.1-armhf:core-3.1-noarch:core-3.2-armhf:core-3.2-noarch:core-4.0-armhf:core-4.0-noarch:core-4.1-armhf:core-4.1-noarch:security-4.0-armhf:security-4.0-noarch:security-4.1-armhf:security-4.1-noarch
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 8.0 (jessie)
+Release:	8.0
+Codename:	jessie
