@@ -22,3 +22,6 @@ add share at bottom of file :
    directory mask=0777
    public=no
 ```
+
+finally set password for the share :
+> sudo smbpasswd -a pi
