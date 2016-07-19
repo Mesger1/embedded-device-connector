@@ -5,9 +5,10 @@ edit samba config file :
 >sudo nano /etc/samba/smb.conf
 
 find and modify : 
-> workgroup = your_workgroup_name
-> wins support = yes
-
+```
+workgroup = your_workgroup_name
+wins support = yes
+```
 
 add share at bottom of file :
 ```
