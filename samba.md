@@ -10,7 +10,7 @@ find and modify :
 
 
 add share at bottom of file :
-markup : `
+```
 [pihome]
    comment= Pi Home
    path=/home/pi
@@ -20,4 +20,4 @@ markup : `
    create mask=0777
    directory mask=0777
    public=no
-`
+```
