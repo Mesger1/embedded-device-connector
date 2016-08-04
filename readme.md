@@ -3,22 +3,19 @@
 update sources.list for node 5.x apt-get :
 > curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
-install node js :
-> sudo apt-get install nodejs
 
-install hostapd and dnsmasq for setting up an accesspoint :
-> sudo apt-get install hostapd dnsmasq
-
-optionally : 
-> sudo apt-get install lsb-core
+download debian package :
+> wget https://github.com/gerdmestdagh/embedded-device-connector/master/embedded-device-connector-1.0.deb
 
 
-install the nodejs connector app :
-> sudo npm install https://github.com/gerdmestdagh/embedded-device-connector.git
+Install debian package (the first command will give an error the following command solves that) : 
+> sudo dpkg -i embedded-device-connector-${VERSION}.deb 
 
-run the connector app :
-> sudo wifi-connector
+Following command :
+> sudo apt-get -f install 
 
+view log :
+> tail -f /var/log/wifi-connector.log
 
 
 
