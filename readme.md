@@ -1,5 +1,8 @@
 # UPDATED INSTALL INSTRUCTIONS
 
+install git : 
+> sudo apt-get install git
+
 update sources.list for node 5.x apt-get :
 > curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
