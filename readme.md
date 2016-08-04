@@ -9,7 +9,7 @@ download debian package :
 
 
 Install debian package (the first command will give an error the following command solves that) : 
-> sudo dpkg -i embedded-device-connector-${VERSION}.deb 
+> sudo dpkg -i embedded-device-connector-1.0.deb 
 
 Following command :
 > sudo apt-get -f install 
