@@ -5,7 +5,7 @@ update sources.list for node 5.x apt-get :
 
 
 download debian package :
-> wget https://github.com/gerdmestdagh/embedded-device-connector/master/embedded-device-connector-1.0.deb
+> wget https://raw.githubusercontent.com/gerdmestdagh/embedded-device-connector/master/embedded-device-connector-1.0.deb
 
 
 Install debian package (the first command will give an error the following command solves that) : 
