@@ -1,0 +1,134 @@
+ <HTML>
+	<head>
+        <title>Pi3 Wifi Setup</title>
+			<link rel="stylesheet" type="text/css" href="css/screen.css">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="/css/bootstrap.min.css">
+            <!-- jQuery library -->
+            <script src="/js/jquery.min.js"></script>
+            <!-- Latest compiled JavaScript -->
+            <script src="/js/bootstrap.min.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+		<script src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+	
+		var server_url = "52.28.98.120";
+	
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+		
+		var device_serial = getParameterByName("serial");
+		
+		
+		// Create the XHR object.
+		function createCORSRequest(method, url) {
+		  var xhr = new XMLHttpRequest();
+		  if ("withCredentials" in xhr) {
+			// XHR for Chrome/Firefox/Opera/Safari.
+			xhr.open(method, url, true);
+		  } else if (typeof XDomainRequest != "undefined") {
+			// XDomainRequest for IE.
+			xhr = new XDomainRequest();
+			xhr.open(method, url);
+		  } else {
+			// CORS not supported.
+			xhr = null;
+		  }
+		  return xhr;
+		}
+		function redirect_to_ap(){
+			window.location.replace("http://192.168.3.1")
+		}
+		function getDeviceList(){
+			// get networks json
+			var xhr = createCORSRequest("GET","http://" + server_url + "/devicestatus/" + device_serial);
+			xhr.send();
+			xhr.onload = function() {
+				var data = JSON.parse(xhr.responseText);
+					$('#type').html(data.type);
+					$('#serial').html(data.serial);
+					$('#gatewaywlan0').html(data.gatewaywlan0);
+					$('#gatewayeth0').html(data.gatewayeth0);
+					$('#ipwlan0').html(data.ipwlan0);
+					$('#ipeth0').html(data.ipeth0);
+				if(data.ipwlan0 === '192.168.3.1'){
+					$('#errormessage').html('Pi could not connect to wifi, plz reconnect to accesspoint and retry, you will be redirected in 30 seconds');
+					setTimeout(	redirect_to_ap, 5000);
+				}else if(data.ipwlan0 === 'undefined'){
+					$('#errormessage').html('severe error ap not setup and wifi not connected, plz reboot the module');
+				}else{
+					window.location.replace("http://" + server_url + "/index.html?serial=" + device_serial);
+				}
+			}
+		}
+		
+		</script>
+    <body onload="setTimeout( getDeviceList, 60000 );">
+		<table>
+				<tr>
+					<td><img src='/images/sprite.png'/></td>
+				</tr>
+				<tr>
+					<td>Serial : 
+						<script type='text/javascript'>
+							document.write(getParameterByName('serial'));
+						</script>
+					</td>
+				</tr>
+				<tr>
+					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center>approx. 1min</center></td>
+				</tr>
+				<tr>
+					<td>
+						<span id="errormessage" style="color:red;"></span>
+					</td>
+				</tr>	
+		</table>
+<!-- 		<table>
+			<tr>
+				<th class="panel-heading">Type:</th>
+				<td>
+					<span id="type"></span>
+				</td>
+			</tr>
+			<tr>
+				<th class="panel-heading">Serial:</th>
+				<td>
+					<span id="serial"></span>
+				</td>
+			</tr>
+			<tr>
+				<th class="panel-heading">gateway wlan0:</th>
+				<td>
+					<span id="gatewaywlan0"></span>
+				</td>
+			</tr>			
+			<tr>
+				<th class="panel-heading">ip wlan0:</th>
+				<td>
+					<span id="ipwlan0"></span>
+				</td>
+			</tr>
+			<tr>
+				<th class="panel-heading"> gateway eth0:</th>
+				<td>
+					<span id="gatewayeth0"></span>
+				</td>
+			</tr>
+			<tr>
+				<th class="panel-heading"> ip eth0:</th>
+				<td>
+					<span id="ipeth0"></span>
+				</td>
+			</tr>
+		</table>	 -->
+	</body>
+</html>
