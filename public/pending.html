@@ -52,14 +52,16 @@
 			var xhr = createCORSRequest("GET","http://" + server_url + "/devicestatus/" + device_serial);
 			xhr.send();
 			xhr.onload = function() {
-				var data = JSON.parse(xhr.responseText);
-					$('#type').html(data.type);
-					$('#serial').html(data.serial);
-					$('#gatewaywlan0').html(data.gatewaywlan0);
-					$('#gatewayeth0').html(data.gatewayeth0);
-					$('#ipwlan0').html(data.ipwlan0);
-					$('#ipeth0').html(data.ipeth0);
-				if(data.ipwlan0 === '' || data.ipwlan0 === '192.168.3.1' || data.ipwlan0 === 'undefined'){
+				if(xhr.responseText != ''){
+					var data = JSON.parse(xhr.responseText);
+						$('#type').html(data.type);
+						$('#serial').html(data.serial);
+						$('#gatewaywlan0').html(data.gatewaywlan0);
+						$('#gatewayeth0').html(data.gatewayeth0);
+						$('#ipwlan0').html(data.ipwlan0);
+						$('#ipeth0').html(data.ipeth0);
+				}
+				if(xhr.responseText == '' || data.ipwlan0 === '' || data.ipwlan0 === '192.168.3.1' || data.ipwlan0 === 'undefined'){
 					$('#errormessage').html('Pi could not connect to wifi, plz reconnect to accesspoint and retry, you will be redirected in 30 seconds');
 					setTimeout(	redirect_to_ap, 30000);
 				}else{
