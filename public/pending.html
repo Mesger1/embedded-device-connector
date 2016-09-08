@@ -67,9 +67,8 @@
 				}
 			}
 		}
-		
 		</script>
-    <body onload="setTimeout( getDeviceList, 45000 );">
+		<body onload="setTimeout( getDeviceList, 45000 );">
 		<table>
 				<tr>
 					<td><img src='/images/sprite.png'/></td>
@@ -82,7 +81,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center>approx. 1min</center></td>
+					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center>approx. 
+					<div id="mycounter"></div>
+						<script>
+						i = 45;
+						function onTimer() {
+						  document.getElementById('mycounter').innerHTML = i;
+						  i--;
+						  if (i > 0) {
+							setTimeout(onTimer, 1000);
+						  }
+						}
+						</script> s.
+					</center></td>
 				</tr>
 				<tr>
 					<td>
