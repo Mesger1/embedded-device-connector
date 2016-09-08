@@ -59,7 +59,7 @@
 					$('#gatewayeth0').html(data.gatewayeth0);
 					$('#ipwlan0').html(data.ipwlan0);
 					$('#ipeth0').html(data.ipeth0);
-				if(data.ipwlan0 === '' || data.ipwlan0 === '192.168.3.1'){
+				if(data.ipwlan0 === '' || data.ipwlan0 === '192.168.3.1' || data.ipwlan0 === 'undefined'){
 					$('#errormessage').html('Pi could not connect to wifi, plz reconnect to accesspoint and retry, you will be redirected in 30 seconds');
 					setTimeout(	redirect_to_ap, 30000);
 				}else{
@@ -67,8 +67,16 @@
 				}
 			}
 		}
+		var i = 45;
+		function onTimer() {
+		  $('#mycounter').html(i.toString() + ' s.');
+		  i--;
+		  if (i >= 0) {
+			setTimeout(onTimer, 1000);
+		  }
+		}
 		</script>
-		<body onload="setTimeout( getDeviceList, 45000 );">
+		<body onload="setTimeout( getDeviceList, 45000 );onTimer();">
 		<table>
 				<tr>
 					<td><img src='/images/sprite.png'/></td>
@@ -81,18 +89,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center>approx. 
+					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center> 
 					<div id="mycounter"></div>
-						<script>
-						i = 45;
-						function onTimer() {
-						  document.getElementById('mycounter').innerHTML = i;
-						  i--;
-						  if (i > 0) {
-							setTimeout(onTimer, 1000);
-						  }
-						}
-						</script> s.
 					</center></td>
 				</tr>
 				<tr>
