@@ -61,7 +61,7 @@
 					$('#ipeth0').html(data.ipeth0);
 				if(data.ipwlan0 === '192.168.3.1'){
 					$('#errormessage').html('Pi could not connect to wifi, plz reconnect to accesspoint and retry, you will be redirected in 30 seconds');
-					setTimeout(	redirect_to_ap, 5000);
+					setTimeout(	redirect_to_ap, 30000);
 				}else if(data.ipwlan0 === 'undefined'){
 					$('#errormessage').html('severe error ap not setup and wifi not connected, plz reboot the module');
 				}else{
@@ -71,7 +71,7 @@
 		}
 		
 		</script>
-    <body onload="setTimeout( getDeviceList, 60000 );">
+    <body onload="setTimeout( getDeviceList, 45000 );">
 		<table>
 				<tr>
 					<td><img src='/images/sprite.png'/></td>
