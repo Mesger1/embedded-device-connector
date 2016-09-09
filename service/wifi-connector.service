@@ -7,6 +7,9 @@ SyslogIdentifier=web-connector
 User=root
 Group=root
 Environment=NODE_ENV=production
+TimeoutSec=infinity
+TimeoutStopUSec=infinity
+
 
 [Install]
 WantedBy=multi-user.target
