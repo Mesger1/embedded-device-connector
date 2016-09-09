@@ -13,11 +13,9 @@ fi
 
 npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g
 
-echo "adding server startup to rc.local"
-
-sed -i '/^sudo wifi-connector/ d' /etc/rc.local
-sed -i '$ i\sudo wifi-connector \&>/dev/null \&' /etc/rc.local
-
-sudo wifi-connector &>/dev/null &
+echo "adding service startup to rc.local"
+sudo cp /usr/lib/node_modules/embedded-device-connector/wifi-connector.service /etc/systemd/system/
+sudo systemctl enable wifi-connector
+sudo systemctl start wifi-connector
 
 exit 0  
