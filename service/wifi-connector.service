@@ -1,0 +1,13 @@
+[Service]
+ExecStart=/usr/bin/node /usr/lib/node_modules/embedded-device-connector/bin/wifi-connector
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=web-connector
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+
