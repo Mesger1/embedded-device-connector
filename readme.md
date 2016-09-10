@@ -1,28 +1,14 @@
 # UPDATED INSTALL INSTRUCTIONS
 
-install git : 
-> sudo apt-get install git
-
-update sources.list for node 5.x apt-get :
-> curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-
-
-download debian package :
-> wget https://raw.githubusercontent.com/gerdmestdagh/embedded-device-connector/master/embedded-device-connector-1.0.deb
-
-
-Install debian package (the first command will give an error the following command solves that) : 
-> sudo dpkg -i embedded-device-connector-1.0.deb 
-
-Following command :
-> sudo apt-get -f install 
+install with one simple command : 
+>  wget -O - -s http://dev-api.gerdmestdagh.be/install.sh | bash
 
 view log :
 > tail -f /var/log/wifi-connector.log
 
 how to use :
 - connect to Pi3-AP with password 'raspberry'
-- go to the select wifi page on http://192.168.3.1 
+- go to the connection page on http://192.168.3.1 
 
 
 
