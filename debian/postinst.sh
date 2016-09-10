@@ -1,19 +1,13 @@
 #!/bin/bash
 
-sudo rm -rf /etc/resolv.conf
-cat > /etc/resolv.conf << EOF
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-EOF
-
 if [ "$EUID" -ne 0 ]
         then echo "Must be root"
         exit
 fi
 
-npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g
+npm install https://github.com/gerdmestdagh/embedded-device-connector.git -g &>/dev/null
 
-echo "adding service startup"
+echo "adding service wifi connector"
 sudo pkill node
 sudo cp /usr/lib/node_modules/embedded-device-connector/service/wifi-connector.service /etc/systemd/system/
 sudo systemctl enable wifi-connector
