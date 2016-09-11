@@ -1,7 +1,7 @@
 # UPDATED INSTALL INSTRUCTIONS
 
 install with one simple command : 
->  wget -O - http://dev-api.gerdmestdagh.be/install.sh | bash
+>  wget -q -O - http://dev-api.gerdmestdagh.be/install.sh | bash
 
 view log :
 > tail -f /var/log/wifi-connector.log
