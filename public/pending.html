@@ -12,7 +12,9 @@
         </head>
 		<script src="/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-	
+		var i = 30;
+		var isConnected = false;
+		
 		var server_url = "dev-api.gerdmestdagh.be";
 	
 		function getParameterByName(name, url) {
@@ -63,19 +65,24 @@
 				}
 				if(xhr.responseText == '' || data.ipwlan0 === '' || data.ipwlan0 === '192.168.3.1' || data.ipwlan0 === 'undefined'){
 				}else{
-					window.location.replace("http://" + server_url + "/index.html?serial=" + device_serial);
+					//window.location.replace("http://" + server_url + "/index.html?serial=" + device_serial);
+					$('#errormessage').html("Connected");
+					$('#mycounter').html(" ");
+					$('#spinner').html(" ");
+					isConnected = true;
 				}
 			}
 		}
-		var i = 60;
 		function onTimer() {
-		  //$('#mycounter').html(i.toString() + ' s.');
-		  i--;
-		  if (i >= 0) {
-			setTimeout(onTimer, 1000);
-		  }else{
-			$('#errormessage').html("There was an error connecting to the wifi. <br/>Please reconnect to the AccessPoint and try again.");
-		  }
+			if(!isConnected){
+				$('#mycounter').html(i.toString() + ' s.');
+				i--;
+				if (i >= 0) {
+					setTimeout(onTimer, 1000);
+				}else{
+					$('#errormessage').html("There was an error connecting to the wifi. <br/>Please reconnect to the AccessPoint and try again.");
+				}
+			}
 		}
 		</script>
 		<body onload="setInterval( getDeviceList, 1000 );onTimer();">
@@ -91,9 +98,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td><img src='/images/loading_spinner.gif' height="40px;"/> Trying configuration ...<br/><center> 
-					<div id="mycounter"></div>
-					</center></td>
+					<td>
+						<center> 
+							<div id="spinner"><img src='/images/loading_spinner.gif' height='40px;'/> Trying configuration ...<br/></div>
+							<div id="mycounter"></div>
+						</center>
+					</td>
 				</tr>
 				<tr>
 					<td>
@@ -101,7 +111,7 @@
 					</td>
 				</tr>	
 		</table>
-<!-- 		<table>
+		<table>
 			<tr>
 				<th class="panel-heading">Type:</th>
 				<td>
@@ -138,6 +148,6 @@
 					<span id="ipeth0"></span>
 				</td>
 			</tr>
-		</table>	 -->
+		</table>
 	</body>
 </html>

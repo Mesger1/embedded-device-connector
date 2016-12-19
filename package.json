@@ -41,6 +41,7 @@
     "winston": "^2.2.0",
     "wireless": "^0.3.2",
     "wireless-tools": "^0.15.0",
-    "ps-node":"^0.1.2"
+    "ps-node":"^0.1.2",
+	"events":"^1.1.1"
   }
 }
