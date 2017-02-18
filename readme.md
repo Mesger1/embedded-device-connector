@@ -8,7 +8,7 @@ view log :
 
 how to use :
 - connect to Pi3-AP with password 'raspberry'
-- go to the connection page on http://192.168.3.1 
+- go to the connection page on http://set.up or any http page (no https)
 
 
 
