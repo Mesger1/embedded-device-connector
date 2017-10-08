@@ -37,7 +37,6 @@
   "homepage": "https://github.com/gerdmestdagh/embedded-device-connector#readme",
   "dependencies": {
     "body-parser": "1.15.1",
-    "express": "4.13.4",
-	"events":"1.1.1"
+    "express": "4.13.4"
   }
 }
