@@ -36,12 +36,6 @@
   },
   "homepage": "https://github.com/gerdmestdagh/embedded-device-connector#readme",
   "dependencies": {
-    "body-parser": "1.15.1",
-    "express": "4.13.4",
-    "winston": "2.2.0",
-    "wireless": "0.3.2",
-    "wireless-tools": "0.15.0",
-    "ps-node":"0.1.2",
-	"events":"1.1.1"
+
   }
 }
